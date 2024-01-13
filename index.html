@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="assets/css/mono-blue.css">
+    <script src="assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/resource.css" />
+    <link href="assets/css/project.css" rel="stylesheet" type="text/css">
+
+    <title>Yelp Maps</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="">Yelp Maps: A Restaurant Recommendation Engine</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+        <div class='col-md-9'>
+          <div class='page-header'>
+            <h1>Yelp Maps</h1>
+            <p>A scaffolded CS1 programming project with a comprehensive client-side autograder<br>
+            Topics: Data abstraction, lists, and dictionaries<br>
+            Developed by Brian Hou, Marvin Zhang, and John DeNero for
+            <a href="http://cs61a.org">CS 61A</a> at UC Berkeley</p>
+          </div>
+
+          <div id="haiku">
+
+
+            <p><img class="img-responsive center-block" src="maps/visualize/voronoi.png" alt="voronoi"></p>
+
+            <blockquote><cite>
+                Let's go out to eat!</br>
+                Show me places I would like</br>
+                By learning my tastes.</br>
+            </cite></blockquote>
+
+          </div>
+
+          <h2 id="introduction">Introduction</h2>
+
+          <p>In the <a href="maps/index.html">Yelp Maps</a> assignment, students
+          apply basic machine learning concepts to predict user ratings and
+          cluster restaurants around a university campus using
+          the <a href="https://www.yelp.com/academic_dataset">Yelp Academic
+          Dataset</a>. The assignment primarily illustrates CS1 concepts such as
+          data abstraction, sequence processing, and key-value pairs. The
+          machine learning ideas are all introduced by the project text as a way
+          of motivating course fundamentals. The course itself does not need
+          to cover these topics in order for the students to complete the
+          project.</p>
+
+          <p>The project builds a single visualization that is developed in
+          independent phases. First, restaurants are clustered by location using
+          the K-means algorithm. Second, ratings for restaurants (visualized
+          using a color scale) are predicted using linear regression (simple
+          regression only; no matrix inversions required). Finally, restaurants
+          are filtered by search queries. Test cases provided with the project
+          ensure that these pieces combine correctly.</p>
+
+          <p>Students don't write the visualization code or need to know how
+          to write a web server, but the interactive visualization is rendered
+          by a web browser using Python's built-in HTTP server. For students
+          interested in web programming, this project allows them to explore
+          and extend an example of a browser-based data visualization.
+
+          <h2 id="started">Getting Started</h2>
+
+          <p><a href="maps/index.html">Try the project now by clicking this
+          link</a>! If you like it, you can deploy it to your students just by
+          giving them <a href="maps/index.html">this link</a> or by hosting the
+          contents of <a href="maps_deploy.zip">this zip</a> on your own site.
+          If you decide to make changes, please make sure to update the
+          contents of <a href="maps/maps.zip">maps.zip</a>, because that's the
+          starter package that students use.
+
+          <h2 id="context">Context</h2>
+
+          This project was developed to illustrate the concepts in Sections
+          <a href="http://composingprograms.com/pages/22-data-abstraction.html">2.2</a>,
+          <a href="http://composingprograms.com/pages/23-sequences.html">2.3.1-2.3.5</a>,
+          and <a href="http://composingprograms.com/pages/24-mutable-data.html">2.4.1-2.4.3</a>
+          of <a href="http://composingprograms.com">Composing Programs</a>,
+          a free online CS 1 textbook developed for CS 61A at UC Berkeley.
+
+          The project presupposes understanding of functions and expressions.
+          We recommend assigning a prior project that reinforces these
+          foundational topics, such as the
+          <a href="inst.eecs.berkeley.edu/~cs61a/fa15/proj/hog">Python version</a>
+          of <a href="http://nifty.stanford.edu/2010/neller-pig"> Hog (Nifty Assignments 2010)</a>.
+          This project was developed as the second project in a semester-long
+          introductory course in which 2/3 of students have prior programming
+          experience.
+
+          <h2 id="instructors">Instructor Guide</h2>
+
+          <p>We distribute all unit tests to students, which allows them to
+          detect and correct their own errors. We also use this project
+          regularly in large courses, so it is common that solutions appear on
+          the Internet. Therefore, we recommend that you assign this project as
+          an instructional component of your course, rather than an
+          assessment. Give students points for completing the assignment
+          correctly, but expect that most students will receive all the points.
+
+          <h2 id="feedback">Feedback</h2>
+
+          <p>In our end-of-semester survey, 26% of students rated Yelp Maps as
+          their favorite project (second only
+          to <a href="http://nifty.stanford.edu/2014/denero-ants-vs-somebees/">Ants
+          vs. Somebees</a>).</p>
+
+          <p>Some sample positive feedback, shamelessly cherry-picked from our
+          end-of-semester survey:</p>
+          <blockquote>The Yelp Maps project felt like one of the best because it
+          was the most polished in terms of how it was presented and the
+          design. I really love when the project instructions have lots of
+          pictures and diagrams to a larger idea.</blockquote>
+          <blockquote>Data analysis projects are great and very applicable to a
+          lot of fields. I think there should more emphasis on this for
+          projects.</blockquote>
+          <blockquote>Yelp Maps brought many advanced topics to a level we could
+          understand.</blockquote>
+          <blockquote>I loved [Yelp Maps]! It made me feel like I was making
+          something that somebody would use.</blockquote>
+          <blockquote>I especially like the Yelp Maps project because it is an
+          example of a practical application. I am most interested in
+          programming apps that have practical daily uses, and this gave me an
+          idea of how one might go about programming a complex app.</blockquote>
+          <blockquote>Yelp Maps taught me a lot because I think many of the
+          confusions regarding [data structures] were solved as a result of the
+          project!</blockquote>
+
+          <p>You can see the final
+          visualization <a href="maps/visualize/index.html">here</a>. These
+          sandwich shop recommendations were generated for a sample user that
+          tended to prefer expensive restaurants.</p>
+
+          <h2 id="metadata">Metadata</h2>
+
+          <table class="table-bordered table-condensed table-hover">
+            <tr>
+              <td>Summary</td>
+              <td>
+                Students develop a restaurant recommendation system using machine
+                learning and the Yelp academic dataset.
+              </td>
+            </tr>
+            <tr>
+              <td>Topics</td>
+              <td>
+                Data abstraction, Python data structures, and introductory ideas
+                in machine learning.
+              </td>
+            </tr>
+            <tr>
+              <td>Audience</td>
+              <td>
+                Appropriate for CS1 students familiar with data abstraction and
+                the Python language.
+              </td>
+            </tr>
+            <tr>
+              <td>Difficulty</td>
+              <td>
+                This assignment is the second project in our CS1 class. Students
+                are given one week, and it is the shortest project out of four.
+              </td>
+            </tr>
+            <tr>
+              <td>Strengths</td>
+              <td>
+                <ul>
+                  <li>The project introduces advanced ideas that students do not
+                    typically see until upper-division classes, such as machine
+                    learning. This allows them to build an application that is
+                    more practical and interesting than would otherwise be
+                    possible.</li>
+                  <li>Students like the real-world application of analyzing large
+                    amounts of data and recommending restaurants to try.</li>
+                  <li>The final D3.js visualization of predicted restaurant
+                    ratings is interactive, and a cool result to play with.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Weaknesses</td>
+              <td>
+                <ul>
+                  <li>The project has a lot of starter code and students are
+                    carefully guided through the project. Although this is helpful
+                    for most students who don’t know how to start a project from
+                    scratch, more advanced students occasionally feel
+                    constrained.</li>
+                  <li>It is difficult to explain the mathematics behind the
+                    algorithms used; some students feel like they are just being
+                    told to implement an algorithm.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Dependencies</td>
+              <td>
+                <ul>
+                  <li>Yelp data for local businesses; the Yelp academic dataset
+                    includes information for businesses near 30 schools.</li>
+                  <li>Students have to understand the fundamentals of data
+                    abstraction, the Python language, and in particular Python data
+                    structures such as lists and dictionaries.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Variants</td>
+              <td>
+                <ul>
+                  <li>More advanced visualizations (e.g. power diagram or other
+                    weighted Voronoi diagrams) can be substituted in place of the
+                    default map.</li>
+                  <li>Students can use the Yelp API to make suggestions based on
+                    their own Yelp ratings.</li>
+                  <li>Students can learn about and implement additional clustering
+                    and regression machine learning algorithms.</li>
+                  <li>Students can use additional data provided with the Yelp
+                    academic dataset to improve suggestions.</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class='col-md-3'>
+          <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+            <ul>
+              <li><a href="#introduction">Introduction</a></li>
+              <li><a href="#metadata">Metadata</a></li>
+            </ul>
+
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </body>
+  <script>
+    $('.sidebar ul').addClass('nav nav-stacked');
+    $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+    });
+  </script>
+
+</html>

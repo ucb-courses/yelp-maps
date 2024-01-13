@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+
+    <link rel="stylesheet" href="../../assets/css/mono-blue.css">
+    <script src="../../assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/resource.css" />
+    <link href="../../assets/css/project.css" rel="stylesheet" type="text/css">
+
+    <title>voronoi</title>
+    <script src="d3.js" charset="utf-8"></script>
+    <style>
+      svg {
+          font: 10px sans-serif;
+          background-image: url("https://maps.googleapis.com/maps/api/staticmap?center=37.87,-122.26&zoom=15&size=600x600");
+          background-size: 600px 600px;
+          background-repeat: no-repeat;
+      }
+
+      .axis path, .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+      }
+
+      .dot {
+          stroke: #000;
+      }
+
+      .tooltip {
+          font: 10px sans-serif;
+          position: absolute;
+          width: 200px;
+          height: 28px;
+          pointer-events: none;
+      }
+    </style>
+  </head>
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="../../index.html">Yelp Maps: A Restaurant Recommendation Engine</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class="row">
+        <div class="page-header">
+        <h1>Visualization</h1>
+        </div>
+        <div class="col-md-7">
+          <div id="target">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p>In this visualization, Berkeley is segmented into regions, where
+            each region is shaded by the predicted rating of the closest
+            restaurant (yellow is 5 stars, blue is 1 star). Each dot represents
+            a restaurant. The color of the dot is determined by the restaurant's
+            location. For example, restaurants on the north half of campus are
+            colored orange.</p>
+          <p>These sandwich shop recommendations were generated for a sample
+            user that tended to prefer expensive restaurants. You can see that
+            the predicted rating for the Golden Bear Cafe (an expensive cafe) is
+            much higher than the other restaurants.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="voronoi.js"></script>
+</html>
+
